@@ -12,10 +12,12 @@ RUN apt-get update && \
     apt-get install --no-install-recommends -y \
     bash \
     ca-certificates \
+    git \
     tzdata \
     unzip && \
     ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
     echo $TZ > /etc/timezone && \
+    git clone --single-branch --depth=1 https://github.com/twitter/twemoji.git /opt/resources/emoji/twemoji && \
     unzip -q /tmp/*.zip -d /opt && \
     chmod +x /opt/koipy && \
     rm -rf /tmp/* && \
